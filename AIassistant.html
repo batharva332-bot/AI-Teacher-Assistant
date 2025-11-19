@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeal College of Engineering & Research</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+    --primary: #43237c;       /* Soft peach */
+    --secondary: #6855ad;     /* Light peach */
+    --accent: #605bab;        /* Peach accent */
+    --light: #fff5f5;         /* Very light peach */
+    --dark: #000000;          /* Dark brownish peach */
+    --shadow: 0 4px 12px rgba(176, 98, 81, 0.4);  /* softer shadow in peach hues */
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #fff5f5 0%, #fdecea 100%);
+    color: #031d03; /* forest green */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+/* Container remains unchanged */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(to right, var(--primary), #2e7ed3);
+    color: var(--dark);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.college-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.college-tagline {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav a {
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    padding: 5px 0;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: var(--transition);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--dark);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(12, 25, 107, 0.85), rgba(48, 54, 161, 0.9)),
+                url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--light);
+    text-align: center;
+    padding: 100px 0;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(127, 78, 78, 0.7);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--secondary);
+    color: var(--dark);
+}
+
+.btn-primary:hover {
+    background: #e48a78;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(229, 138, 120, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--light);
+    border: 2px solid var(--light);
+}
+
+.btn-secondary:hover {
+    background: var(--light);
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+/* Features Section */
+.features {
+    padding: 80px 0;
+    background: var(--light);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--secondary);
+    border-radius: 2px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: var(--light);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(223, 172, 160, 0.4);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+/* App Section */
+.app-section {
+    background: linear-gradient(to right, var(--primary), #eab5b0);
+    color: var(--dark);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.app-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.app-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.app-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.app-badge {
+    display: inline-block;
+    background: var(--light);
+    padding: 15px 25px;
+    border-radius: 10px;
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.app-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(223, 172, 160, 0.4);
+}
+
+.app-badge i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* News Section */
+.news {
+    padding: 80px 0;
+    background: #fff5f5;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.news-card {
+    background: var(--light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(223, 172, 160, 0.4);
+}
+
+.news-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 20px;
+}
+
+.news-date {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    margin-bottom: 10px;
+}
+
+.news-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.news-card p {
+    margin-bottom: 15px;
+    color: #7f4e4e;
+}
+
+.read-more {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: var(--transition);
+}
+
+.read-more:hover {
+    color: var(--secondary);
+    gap: 10px;
+}
+
+/* Footer */
+footer {
+    background: var(--dark);
+    color: var(--light);
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--secondary);
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    color: #d8aba7;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-col a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background: var(--secondary);
+    transform: translateY(-5px);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #c9a9a4;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--secondary);
+    color: var(--dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--primary);
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .logo-container {
+        justify-content: center;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    nav {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+
+    nav.active {
+        max-height: 300px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="logo1.jpg" alt="SchoolAI logo" class="logo">
+                    <div class="logo-text">
+                        <div class="college-name">SchoolAI</div>
+                        <div class="college-tagline">Excellence in Technical Education</div>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#academics">Academics</a></li>
+                         <li><a href="#">Assignments</a></li>
+                          <li><a href="#">Students</a></li>
+                         <li><a href="#">Settings</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Shaping Future Engineers</h1>
+                <p>Shaping the future of learning, one student at a time."AI is transforming education, one lesson at a time.</p>
+                <div class="hero-btns">
+                    <a href="login3.html" class="btn btn-primary">
+                        <i class="fas fa-graduation-cap"></i>Student Login
+                    </a>
+                    <a href="https://en.wikipedia.org/wiki/Artificial_intelligence"target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-map-marker-alt"></i> Explore AI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose AI?</h2>
+                <p>Discover what makes us the preferred choice for engineering education</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Scalability and Innovation</h3>
+                    <p>AI enables businesses to scale operations efficiently, especially during peak demand, and drives innovation through advancements in self-driving cars, drug discovery, and personalized learning.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Advanced Labs</h3>
+                    <p>State-of-the-art laboratories equipped with modern equipment and technology.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>24/7 Operation</h3>
+                    <p> Unlike humans, AI systems can function continuously without fatigue, ensuring uninterrupted service in customer support, monitoring, and operational management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section -->
+    <section class="app-section">
+        <div class="container">
+            <div class="app-content">
+                <h2>Exclusive Mobile App</h2>
+               
+                <a href="https://play.google.com/store/apps/details?id=com.YoStarEN.StellaSora&hl=en_IN" class="app-badge">
+                    <i class="fab fa-google-play"></i> Download on Google Play
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+   
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EduAssist AI</h3>
+                    <p>Transforming education through AI-powered solutions that support teachers and enhance student learning experiences.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 EduAssist AI. All rights reserved. Aligned with UN Sustainable Development Goal 4: Quality Education.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    nav.classList.remove('active');
+                }
+            });
+        });
+
+        // Newsletter Form Submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing with ${email}! You'll receive our updates soon.`);
+            newsletterForm.reset();
+        });
+    </script>
+</body>
+</html>
